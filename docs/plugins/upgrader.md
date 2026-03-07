@@ -29,6 +29,14 @@ GatherYieldLevels / DurabilityToolLevels / TreeDeforestationLevels / InstantMini
 
 ---
 
+
+
+## 一般プレイヤー向けの使用方法
+プレイヤーはチャットコマンド等を使用してこのプラグインの機能を利用できます。
+
+### コマンド
+- /up または /upgrade : アイテムのアップグレードメニューを開きます。（専用ハンマーを使用する場合もあります）
+
 ## サーバー管理者向け（ファイル操作）
 
 ### プラグインの導入
