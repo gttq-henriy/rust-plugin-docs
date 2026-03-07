@@ -1,29 +1,40 @@
-# InitialHealthModifier の使用方法（導入および設定手順）
+# InitialHealthModifier 使用方法
 
-## 1. プラグインのインストール
-1. `Src` フォルダ内に作成された `InitialHealthModifier.cs` ファイルをコピーします。
-2. 稼働中の Rust サーバーの **Carbon（またはOxide）プラグインディレクトリ**に配置します。
-   - 例: `[サーバーのルートディレクトリ]/carbon/plugins/InitialHealthModifier.cs`
-3. 配置後、自動的にプラグインがコンパイルされロードされます。（コンソールログで `Loaded plugin InitialHealthModifier v1.0.0` のようなメッセージが出れば成功です）
+## 概要
+プレイヤーがリスポーンした際の初期体力（HP）上限を変更するプラグインです。デフォルトの100HPを任意の値（例: 200HP）に設定できます。
 
-## 2. 設定ファイルの変更方法
-プラグインが初めて起動すると、自動的にコンフィグファイルが生成されます。
+## 主な仕様
+- リスポーン時に自動で体力上限と現在HPが設定値に変更されます。
+- 権限やコマンドは不要で、導入するだけで動作します。
 
-1. **コンフィグディレクトリ** を開きます。
-   - 例: `[サーバーのルートディレクトリ]/carbon/config/InitialHealthModifier.json`
-2. テキストエディタ（メモ帳やVSCodeなど）で開くと、以下のような内容になっています。
+---
+
+## サーバー管理者向け（ファイル操作）
+
+### プラグインの導入
+1. `InitialHealthModifier.cs` を `carbon/plugins/` に配置します。
+2. 設定ファイル: `carbon/config/InitialHealthModifier.json`
    ```json
    {
      "InitialHealth": 200.0
    }
    ```
-3. `InitialHealth` の数値（デフォルトは 200.0）を希望の初期体力値に変更して上書き保存します。
-4. サーバーのコンソール（またはゲーム内の F1 コンソール）で、以下のリロードコマンドを入力して変更を反映します。
+3. `InitialHealth` の数値を変更して保存後、リロードします。
    ```
    carbon.reload InitialHealthModifier
    ```
-   （※Oxide互換モードの場合は `o.reload InitialHealthModifier` です）
 
-## 3. 確認
-- ゲーム内でキーボードの `F1` を押してコンソールを開き `kill` と入力して死亡するか、通常の手段で死亡したあとにリスポーンします。
-- リスポーン後、画面右下の HP バーの上限値および現在値が設定した値に変更されていることを確認します。
+### 確認方法
+- ゲーム内で `kill` コマンドで死亡→リスポーン後、HP上限が設定値になっていることを確認。
+
+---
+
+## ゲーム内管理者向け（Carbon CPanel）
+
+### CPanel へのアクセス
+- `F1` コンソールで `cpanel` と入力、またはチャットで `/cpanel` を実行します。
+
+### プラグインの管理
+1. **「Plugins」** タブから **InitialHealthModifier** を選択。
+2. **Reload** でリロード、**Config** で体力値を確認できます。
+3. 本プラグインには権限設定が不要なため、Permissionsの操作は必要ありません。

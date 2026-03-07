@@ -1,76 +1,57 @@
-# SpawnLoadout の使用方法（導入および設定手順）
+# SpawnLoadout 使用方法
 
-## 1. プラグインのインストール
-1. `Src` フォルダ内の `SpawnLoadout.cs` をコピーします。
-2. Rustサーバーの **Carbonプラグインディレクトリ** に配置します。
-   - 例: `[サーバーのルートディレクトリ]/carbon/plugins/SpawnLoadout.cs`
-3. 配置後、自動的にコンパイルされてロードされます。
-   - コンソールログで `Spawn Loadout plugin loaded.` と表示されれば成功です。
+## 概要
+プレイヤーがリスポーンした際に、設定ファイルで定義したアイテムを自動的にインベントリへ付与するプラグインです。
 
-## 2. 設定ファイルの変更方法
-プラグインが初回ロードされると、自動的にコンフィグファイルが生成されます。
+## 主な機能
+- リスポーン時にホットバー・メインインベントリ・装備スロットの3箇所に指定アイテムを自動付与
+- カスタム表示名やスキンIDの設定が可能
+- 権限やコマンドは不要で、導入するだけで動作
 
-1. **コンフィグファイル** を開きます。
-   - 例: `[サーバーのルートディレクトリ]/carbon/config/SpawnLoadout.json`
-2. テキストエディタで開くと、以下のような内容になっています。
-   ```json
-   {
-     "Items": [
-       {
-         "Shortname": "stone.pickaxe",
-         "DisplayName": "",
-         "SkinID": 0,
-         "Amount": 1,
-         "Container (main/belt/wear)": "belt"
-       },
-       {
-         "Shortname": "stonehatchet",
-         "DisplayName": "",
-         "SkinID": 0,
-         "Amount": 1,
-         "Container (main/belt/wear)": "belt"
-       },
-       {
-         "Shortname": "torch",
-         "DisplayName": "",
-         "SkinID": 0,
-         "Amount": 1,
-         "Container (main/belt/wear)": "belt"
-       }
-     ]
-   }
-   ```
+---
 
-### 設定項目の説明
-| 項目 | 説明 | 例 |
-|---|---|---|
-| `Shortname` | Rustのアイテム内部名 | `"stone.pickaxe"`, `"bandage"`, `"hoodie"` |
-| `DisplayName` | カスタム表示名（空欄ならデフォルト名を使用） | `"初心者キット"` |
-| `SkinID` | スキンID（0ならデフォルトの見た目） | `0` |
-| `Amount` | 付与する個数 | `1`, `5`, `10` |
-| `Container` | 配置先（`belt` = ホットバー、`main` = メインインベントリ、`wear` = 装備スロット） | `"belt"` |
+## サーバー管理者向け（ファイル操作）
 
-### アイテムの追加例
-衣服を追加する場合:
+### プラグインの導入
+1. `SpawnLoadout.cs` を `carbon/plugins/` に配置します。
+2. 設定ファイル: `carbon/config/SpawnLoadout.json`
+3. リロード: `carbon.reload SpawnLoadout`
+
+### 設定ファイルの編集
 ```json
 {
-  "Shortname": "burlap.shirt",
-  "DisplayName": "",
-  "SkinID": 0,
-  "Amount": 1,
-  "Container (main/belt/wear)": "wear"
+  "Items": [
+    {
+      "Shortname": "stone.pickaxe",
+      "DisplayName": "",
+      "SkinID": 0,
+      "Amount": 1,
+      "Container (main/belt/wear)": "belt"
+    }
+  ]
 }
 ```
 
-## 3. リロードとテスト
-1. 設定ファイルを保存後、サーバーのコンソールでリロードコマンドを実行します。
-   ```
-   carbon.reload SpawnLoadout
-   ```
-2. ゲーム内で `F1` → `kill` で死亡し、リスポーンします。
-3. リスポーン後、設定したアイテムがインベントリに入っていることを確認してください。
+| 項目 | 説明 | 例 |
+|---|---|---|
+| `Shortname` | アイテムの内部名 | `"stone.pickaxe"`, `"bandage"` |
+| `DisplayName` | カスタム表示名（空欄でデフォルト） | `"初心者キット"` |
+| `SkinID` | スキンID（0でデフォルト） | `0` |
+| `Amount` | 付与する個数 | `1`, `5` |
+| `Container` | 配置先 | `"belt"` / `"main"` / `"wear"` |
 
-## 4. アイテムのShortname一覧の確認方法
-Rustの全アイテムショートネーム一覧は以下で確認できます。
-- ゲーム内コンソール（F1）で `find item` と入力 → リストが出力されます。
+### アイテムShortname一覧
+- ゲーム内コンソール（F1）で `find item` と入力
 - 外部サイト: [Rust Item List](https://www.corrosionhour.com/rust-item-list/) 等
+
+---
+
+## ゲーム内管理者向け（Carbon CPanel）
+
+### CPanel へのアクセス
+- `F1` コンソールで `cpanel` と入力、またはチャットで `/cpanel` を実行します。
+
+### プラグインの管理
+1. **「Plugins」** タブから **SpawnLoadout** を選択。
+2. **Reload** でリロード、**Config** で付与アイテムの設定を確認できます。
+3. 本プラグインには権限設定が不要なため、Permissionsの操作は必要ありません。
