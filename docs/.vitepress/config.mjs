@@ -42,6 +42,7 @@ export default defineConfig({
           { text: 'SignArtist', link: '/plugins/sign-artist' },
           { text: 'SimpleLogo', link: '/plugins/simple-logo' },
           { text: 'SpawnLoadout', link: '/plugins/spawn-loadout' },
+          { text: 'Spawns', link: '/plugins/spawns' },
           { text: 'TechTree', link: '/plugins/tech-tree' },
           { text: 'Telekinesis', link: '/plugins/telekinesis' },
           { text: 'Upgrader', link: '/plugins/upgrader' },

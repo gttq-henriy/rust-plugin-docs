@@ -91,6 +91,9 @@ features:
   - title: SpawnLoadout
     details: リスポーン時の初期装備を自動付与
     link: /plugins/spawn-loadout
+  - title: Spawns
+    details: カスタムスポーン位置の作成と管理データベース
+    link: /plugins/spawns
   - title: TechTree
     details: テックツリーの完全カスタマイズ
     link: /plugins/tech-tree
