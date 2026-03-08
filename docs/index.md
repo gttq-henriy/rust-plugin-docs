@@ -85,6 +85,9 @@ features:
   - title: SignArtist
     details: 看板・フォトフレームにURLから画像を描画
     link: /plugins/sign-artist
+  - title: SimpleLogo
+    details: 画面上部にカスタムロゴ画像を表示
+    link: /plugins/simple-logo
   - title: SpawnLoadout
     details: リスポーン時の初期装備を自動付与
     link: /plugins/spawn-loadout

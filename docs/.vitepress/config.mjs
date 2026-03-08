@@ -40,6 +40,7 @@ export default defineConfig({
           { text: 'RobSpawn', link: '/plugins/rob-spawn' },
           { text: 'ScavengerHunt', link: '/plugins/scavenger-hunt' },
           { text: 'SignArtist', link: '/plugins/sign-artist' },
+          { text: 'SimpleLogo', link: '/plugins/simple-logo' },
           { text: 'SpawnLoadout', link: '/plugins/spawn-loadout' },
           { text: 'TechTree', link: '/plugins/tech-tree' },
           { text: 'Telekinesis', link: '/plugins/telekinesis' },
