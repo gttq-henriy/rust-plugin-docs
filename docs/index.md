@@ -73,6 +73,9 @@ features:
   - title: NPCShop
     details: NPCショップ（売買・在庫管理・割引対応）
     link: /plugins/npc-shop
+  - title: NpcPlacer
+    details: BetterNpc用カスタムスポーンポイントをゲーム内チャットコマンドで視覚的に設定
+    link: /plugins/npc-placer
   - title: RobLoot
     details: NPC死亡時のカスタムルートテーブル
     link: /plugins/rob-loot
